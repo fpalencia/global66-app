@@ -13,7 +13,7 @@ dotenv.config()
 
 export default {
   // Target server para renderizado del lado del servidor (SSR)
-  target: 'server',
+  target: 'static',
 
   // Configuración del head global
   head: {
