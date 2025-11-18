@@ -8,11 +8,13 @@
  */
 
 // Cargar variables de entorno desde .env antes de usar process.env
-import dotenv from 'dotenv'
+const dotenv = require('dotenv')
 dotenv.config()
+
 module.exports = {
   // Target server para renderizado del lado del servidor (SSR)
-  target: 'static',
+  // Nota: 'server' es necesario para que funcione serverMiddleware (API)
+  target: 'server',
 
   // Configuración del head global
   head: {
@@ -85,7 +87,7 @@ module.exports = {
 
   // Variables de entorno públicas
   publicRuntimeConfig: {
-    baseURL: process.env.base_url || 'http://localhost:3000',
+    baseURL: process.env.BASE_URL || 'http://localhost:3000'
   },
 
   // Variables de entorno privadas (solo en servidor)
