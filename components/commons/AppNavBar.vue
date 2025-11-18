@@ -49,7 +49,7 @@
                     <a href="#"
                       class="group relative flex items-start gap-x-6 rounded-lg px-4 py-5 hover:bg-neutral-50">
                       <div class="flex-shrink-0">
-                        <div class="w-10 h-10 bg-global-blue rounded-lg"></div>
+                        <img src="~/assets/images/cuenta-global.svg" width="50" height="50" alt="cuenta-global" loading="lazy" /> 
                       </div>
                       <div class="flex flex-col gap-1">
                         <span class="text-sm font-bold text-black">Cuenta Global</span>
@@ -61,7 +61,7 @@
                     <a href="#"
                       class="group relative flex items-start gap-x-6 rounded-lg px-4 py-5 hover:bg-neutral-50">
                       <div class="flex-shrink-0">
-                        <div class="w-10 h-10 bg-global-blue rounded-lg"></div>
+                        <img src="~/assets/images/tarjeta.svg" width="50" height="50" alt="tarjeta-mastercard" loading="lazy" />
                       </div>
                       <div class="flex flex-col gap-1">
                         <span class="text-sm font-bold text-black">Tarjeta Mastercard</span>
@@ -73,7 +73,7 @@
                     <a href="#"
                       class="group relative flex items-start gap-x-6 rounded-lg px-4 py-5 hover:bg-neutral-50">
                       <div class="flex-shrink-0">
-                        <div class="w-10 h-10 bg-global-blue rounded-lg"></div>
+                        <img src="~/assets/images/transferencias-internacionales.svg" width="50" height="50" alt="transferencias-internacionales" loading="lazy" />
                       </div>
                       <div class="flex flex-col gap-1">
                         <span class="text-sm font-bold text-black">Transferencias Internacionales</span>
@@ -105,7 +105,7 @@
                     <a href="#"
                       class="group relative flex items-start gap-x-6 rounded-lg px-4 py-5 hover:bg-neutral-50">
                       <div class="flex-shrink-0">
-                        <div class="w-10 h-10 bg-global-green rounded-lg"></div>
+                        <img src="~/assets/images/beneficios-globales.svg" width="50" height="50" alt="beneficios-globales" loading="lazy" />
                       </div>
                       <div class="flex flex-col gap-1">
                         <span class="text-sm font-bold text-black">Beneficios Globales</span>
@@ -117,7 +117,7 @@
                     <a href="#"
                       class="group relative flex items-start gap-x-6 rounded-lg px-4 py-5 hover:bg-neutral-50">
                       <div class="flex-shrink-0">
-                        <div class="w-10 h-10 bg-global-green rounded-lg"></div>
+                        <img src="~/assets/images/invita-y-gana.svg" width="50" height="50" alt="invita-y-gana" loading="lazy" />
                       </div>
                       <div class="flex flex-col gap-1">
                         <span class="text-sm font-bold text-black">Invita y Gana</span>
