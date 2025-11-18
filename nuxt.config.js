@@ -8,12 +8,12 @@
  */
 
 // Cargar variables de entorno desde .env antes de usar process.env
-import dotenv from 'dotenv'
+const dotenv = require('dotenv')
 dotenv.config()
 
-export default {
+module.exports = {
   // Target server para renderizado del lado del servidor (SSR)
-  target: 'static',
+  target: 'server',
 
   // Configuración del head global
   head: {
