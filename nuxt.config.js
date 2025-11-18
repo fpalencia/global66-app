@@ -8,7 +8,8 @@
  */
 
 // Cargar variables de entorno desde .env antes de usar process.env
-
+import dotenv from 'dotenv'
+dotenv.config()
 module.exports = {
   // Target server para renderizado del lado del servidor (SSR)
   target: 'static',
@@ -85,9 +86,6 @@ module.exports = {
   // Variables de entorno públicas
   publicRuntimeConfig: {
     baseURL: process.env.BASE_URL || 'http://localhost:3000',
-    API_URL: process.env.API_URL,
-    SHEET_ID: process.env.SHEET_ID,
-    GOOGLE_KEY: process.env.GOOGLE_KEY
   },
 
   // Variables de entorno privadas (solo en servidor)
