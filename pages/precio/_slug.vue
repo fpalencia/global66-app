@@ -118,7 +118,7 @@ export default {
     // Descripción dinámica
     const description = `Consulta el tipo de cambio del dólar (USD) a ${currencyName} (${currencyCode}). 1 USD = ${rate} ${currencyCode}. Tipo de cambio actualizado para ${formattedDate}.`
 
-/*     // Fecha actual en formato ISO
+    // Fecha actual en formato ISO
     const now = new Date()
     const isoDate = now.toISOString()
 
@@ -195,7 +195,7 @@ export default {
           }
         ]
       }
-    ] */
+    ]
 
     return {
       title: `Valor del dólar hoy en ${currencyName} (${currencyCode}) - Global66`,
