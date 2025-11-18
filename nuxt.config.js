@@ -7,14 +7,10 @@
  * - Meta tags y SEO básico
  */
 
-// Cargar variables de entorno desde .env antes de usar process.env
-const dotenv = require('dotenv')
-dotenv.config()
-
 module.exports = {
   // Target server para renderizado del lado del servidor (SSR)
   // Nota: 'server' es necesario para que funcione serverMiddleware (API)
-  target: 'server',
+  target: 'static',
 
   // Configuración del head global
   head: {
