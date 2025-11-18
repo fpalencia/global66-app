@@ -14,6 +14,7 @@
 import AppHeroBanner from '~/components/currency/AppHeroBanner.vue'
 import AppCallToAction from '~/components/currency/AppCallToAction.vue'
 import { getCurrencyFromSlug, isValidSlug } from '~/utils/currencyMapper'
+import { apiGet } from '~/utils/api'
 
 export default {
   name: 'PrecioPage',
@@ -36,15 +37,9 @@ export default {
     }
 
     try {
-      // Obtener tipo de cambio
-      const baseUrl = process.server ? 'http://localhost:3000' : window.location.origin
-      const response = await fetch(`${baseUrl}/api/rates?base=USD&target=${currencyCode}`)
- 
-      if (!response.ok) {
-        throw new Error(`API error: ${response.status}`)
-      }
- 
-      const { rates = {} } = await response.json()
+      // Obtener tipo de cambio usando la utilidad compartida
+      const data = await apiGet('/api/rates', { base: 'USD', target: currencyCode })
+      const rates = data.rates || {}
       const rate = rates[currencyCode] || 0
  
       // Formatear fecha usando Intl.DateTimeFormat (más moderno y mantenible)
@@ -105,15 +100,16 @@ export default {
   head() {
     // Obtener datos de asyncData o valores por defecto
     const slug = this.$route?.params?.slug || ''
-    const currencyCode = this.exchangeData?.currencyTo || ''
+    const currencyCode = this.exchangeData?.currencyFrom || ''
     const currencyName = this.currencyName || currencyCode
     const rate = this.formattedRate || ''
+    const rateNumeric = parseFloat(rate.replace(',', '.')) || 0
     const formattedDate = this.formattedDate || 'hoy'
 
     // Construir URL canónica
     let baseURL = 'http://localhost:3000'
-    if (process.client) {
-      baseURL = `${window.location.protocol}//${window.location.host}`
+    if (process.client && window) {
+      baseURL = window.location.origin
     } else if (this.$config && this.$config.baseURL) {
       baseURL = this.$config.baseURL
     }
@@ -121,6 +117,85 @@ export default {
 
     // Descripción dinámica
     const description = `Consulta el tipo de cambio del dólar (USD) a ${currencyName} (${currencyCode}). 1 USD = ${rate} ${currencyCode}. Tipo de cambio actualizado para ${formattedDate}.`
+
+/*     // Fecha actual en formato ISO
+    const now = new Date()
+    const isoDate = now.toISOString()
+
+    // Schema.org JSON-LD
+    const structuredData = [
+      // Organization Schema
+      {
+        '@context': 'https://schema.org',
+        '@type': 'Organization',
+        name: 'Global66',
+        url: baseURL,
+        logo: `${baseURL}/assets/images/global-icon.svg`,
+        description: 'Plataforma de servicios financieros internacionales',
+        sameAs: [
+          'https://www.facebook.com/global66',
+          'https://www.instagram.com/global66',
+          'https://www.linkedin.com/company/global66'
+        ]
+      },
+      // WebPage Schema
+      {
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        name: `Valor del dólar hoy en ${currencyName} (${currencyCode})`,
+        description: description,
+        url: canonicalUrl,
+        inLanguage: 'es-CL',
+        datePublished: isoDate,
+        dateModified: isoDate,
+        publisher: {
+          '@type': 'Organization',
+          name: 'Global66',
+          url: baseURL
+        }
+      },
+      // ExchangeRateSpecification Schema
+      {
+        '@context': 'https://schema.org',
+        '@type': 'ExchangeRateSpecification',
+        currency: 'USD',
+        currentExchangeRate: {
+          '@type': 'UnitPriceSpecification',
+          price: rateNumeric,
+          priceCurrency: currencyCode
+        },
+        exchangeRateSpread: {
+          '@type': 'MonetaryAmount',
+          currency: currencyCode,
+          value: rateNumeric
+        }
+      },
+      // BreadcrumbList Schema
+      {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Inicio',
+            item: baseURL
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Precio',
+            item: `${baseURL}/precio`
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: currencyName,
+            item: canonicalUrl
+          }
+        ]
+      }
+    ] */
 
     return {
       title: `Valor del dólar hoy en ${currencyName} (${currencyCode}) - Global66`,
@@ -144,6 +219,11 @@ export default {
           hid: 'og:url',
           property: 'og:url',
           content: canonicalUrl
+        },
+        {
+          hid: 'og:type',
+          property: 'og:type',
+          content: 'website'
         }
       ],
       link: [
@@ -157,6 +237,13 @@ export default {
           rel: 'alternate',
           hreflang: 'es-CL',
           href: canonicalUrl
+        }
+      ],
+      script: [
+        {
+          hid: 'structured-data',
+          type: 'application/ld+json',
+          json: structuredData
         }
       ]
     }
