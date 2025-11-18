@@ -77,7 +77,27 @@ module.exports = {
   serverMiddleware: [{ path: '/api', handler: '~/api/index.ts' }],
 
   // Configuración del build
-  build: {},
+  build: {
+    // Optimizaciones para reducir el tamaño del bundle
+    extractCSS: true,
+    optimization: {
+      splitChunks: {
+        chunks: 'all',
+        automaticNameDelimiter: '.',
+        name: undefined,
+        cacheGroups: {
+          vendor: {
+            test: /[\\/]node_modules[\\/]/,
+            priority: -10
+          }
+        }
+      }
+    },
+    // Transpilación solo lo necesario
+    transpile: [],
+    // Minimizar el bundle
+    minimize: true
+  },
 
   // Configuración del servidor de desarrollo
   server: {

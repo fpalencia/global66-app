@@ -1,0 +1,35 @@
+# Archivos de desarrollo
+*.md
+README.md
+.git
+.github
+.vscode
+.idea
+
+# Tests
+*.test.js
+*.test.ts
+*.spec.js
+*.spec.ts
+__tests__
+test
+tests
+
+# Documentación y ejemplos
+docs
+examples
+
+# Archivos de configuración local
+.env
+.env.local
+.env.*.local
+
+# Node modules innecesarios
+node_modules/@types
+node_modules/typescript
+node_modules/ts-node
+
+# Archivos grandes de desarrollo
+*.map
+*.log
+
