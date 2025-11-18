@@ -3,16 +3,7 @@
   "builds": [
     {
       "src": "nuxt.config.js",
-      "use": "@nuxtjs/vercel-builder",
-      "config": {
-        "maxLambdaSize": "50mb"
-      }
+      "use": "@nuxtjs/vercel-builder"
     }
-  ],
-  "functions": {
-    "api/**": {
-      "maxDuration": 10,
-      "memory": 1024
-    }
-  }
+  ]
 }
