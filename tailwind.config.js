@@ -21,8 +21,6 @@ module.exports = {
         'global-blue': '#1f49b6', // Azul principal (navbar, hero) - Figma
         'global-blue-dark': '#102a97', // Azul oscuro para textos
         'global-green': '#00c48c', // Verde acento - Figma
-        'global-green-alt': '#01d196', // Verde alternativo
-        'global-purple': '#5B4FD9', // Púrpura alternativo
         'global-light': '#f5f7fe', // Fondo claro/gris - Figma
         'global-dark': '#221c1c', // Texto oscuro - Figma
         'global-gray': '#565656', // Gris para textos secundarios

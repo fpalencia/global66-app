@@ -4,7 +4,7 @@
     :style="{
       transform: isScrolled ? 'translateY(0)' : 'translateY(-100%)'
     }">
-    <div class="container mx-auto px-4">
+    <div class="container mx-auto px-12">
       <div class="flex h-full items-center py-3 xl:py-0">
         <!-- Logo -->
         <div>
@@ -225,7 +225,7 @@
         <div class="fixed inset-0 bg-black bg-opacity-50" @click="mobileMenuOpen = false"></div>
 
         <!-- Side Menu -->
-        <div class="fixed bottom-0 top-0 left-0 z-10 w-full overflow-y-auto px-6 py-6 sm:max-w-sm bg-white">
+        <div class="fixed bottom-0 top-0 left-0 z-10 w-full overflow-y-auto px-6 py-6 sm:max-w-sm bg-white h-screen">
           <div class="flex flex-col gap-6">
             <!-- Header -->
             <div class="flex items-center justify-between">

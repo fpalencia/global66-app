@@ -1,6 +1,6 @@
 <template>
   <section class="py-12 md:py-20 lg:py-28">
-    <div class="container mx-auto px-4">
+    <div class="container mx-auto px-12">
       <div class="relative">
         <!-- Card Container con overflow visible para que la imagen sobresalga -->
         <div class="bg-global-light rounded-3xl shadow-xl overflow-visible">
@@ -13,7 +13,7 @@
                   src="~/assets/images/banner-img.png"
                   alt="Global66 App - Teléfonos y tarjeta"
                   class="w-full h-auto object-contain lg:scale-110"
-                  style="max-width: 650px;"
+                  style="max-width: 500px;"
                 />
               </div>
             </div>

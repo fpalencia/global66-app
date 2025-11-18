@@ -1,6 +1,6 @@
 <template>
   <section class="bg-global-blue relative overflow-hidden pt-20 md:pt-24 lg:pt-40">
-    <div class="container mx-auto px-4">
+    <div class="container mx-auto px-12">
       <div class="flex flex-col lg:flex-row justify-between gap-8 lg:gap-12">
         
         <!-- Left Content - Text -->
@@ -63,7 +63,7 @@
             </div>
 
             <!-- Stand Base -->
-            <div class="relative z-0 transform scale-110 md:scale-125 lg:scale-135 origin-bottom">
+            <div class="relative z-0 transform scale-100 md:scale-110 lg:scale-120 origin-bottom">
               <img
                 src="~/assets/images/stand.svg"
                 alt="stand"
@@ -83,27 +83,21 @@ export default {
   props: {
     title: {
       type: String,
-      default: 'Valor del dolar hoy'
     },
     currencyFrom: {
       type: String,
-      default: 'CLP'
     },
     currencyTo: {
       type: String,
-      default: 'USD'
     },
     rate: {
       type: [String, Number],
-      default: '987,62'
     },
     date: {
       type: String,
-      default: 'martes 31 de octubre'
     },
     time: {
       type: String,
-      default: '17:51 UTC'
     }
   },
   computed: {
