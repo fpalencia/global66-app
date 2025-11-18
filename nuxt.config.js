@@ -11,7 +11,7 @@
 
 module.exports = {
   // Target server para renderizado del lado del servidor (SSR)
-  target: 'server',
+  target: 'static',
 
   // Configuración del head global
   head: {
@@ -84,7 +84,10 @@ module.exports = {
 
   // Variables de entorno públicas
   publicRuntimeConfig: {
-    baseURL: process.env.BASE_URL || 'http://localhost:3000'
+    baseURL: process.env.BASE_URL || 'http://localhost:3000',
+    API_URL: process.env.API_URL,
+    SHEET_ID: process.env.SHEET_ID,
+    GOOGLE_KEY: process.env.GOOGLE_KEY
   },
 
   // Variables de entorno privadas (solo en servidor)
