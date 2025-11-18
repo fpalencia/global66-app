@@ -4,19 +4,22 @@
 
 /**
  * Obtiene la URL base de la API
- * - En el servidor (SSR): usa localhost
- * - En el cliente: usa el origen de la ventana
+ * - En desarrollo: usa localhost con serverMiddleware (si está disponible)
+ * - En producción: usa Netlify Functions
  */
 export const getApiBaseUrl = (): string => {
-  if (process.server) {
+  // En desarrollo local
+  if (process.env.NODE_ENV === 'development') {
     return 'http://localhost:3000'
   }
   
+  // En producción con Netlify Functions
   if (process.client && window) {
     return window.location.origin
   }
   
-  return 'http://localhost:3000'
+  // Fallback para SSG en producción
+  return process.env.BASE_URL || 'https://appglobal66.netlify.app'
 }
 
 /**

@@ -12,9 +12,8 @@ const dotenv = require('dotenv')
 dotenv.config()
 
 module.exports = {
-  // Target server para renderizado del lado del servidor (SSR)
-  // Nota: 'server' es necesario para que funcione serverMiddleware (API)
-  target: 'server',
+  // Target static para generación estática (compatible con Netlify)
+  target: 'static',
 
   // Configuración del head global
   head: {
@@ -72,9 +71,6 @@ module.exports = {
     injectPosition: 0,
     viewer: true
   },
-
-  // Server Middleware para la API
-  serverMiddleware: [{ path: '/api', handler: '~/api/index.ts' }],
 
   // Configuración del build
   build: {},
