@@ -13,9 +13,9 @@ export default {
 
   // Configuración del head global
   head: {
-    title: 'Global66 App - Nuxt 2 con API',
+    title: 'Tu App para Pagar, Cobrar y Enviar Dinero  | Global66',
     htmlAttrs: {
-      lang: 'es'
+      lang: 'es-CL'
     },
     meta: [
       { charset: 'utf-8' },
@@ -23,8 +23,14 @@ export default {
       {
         hid: 'description',
         name: 'description',
-        content: 'Aplicación Global66 con Nuxt 2 y API integrada'
-      }
+        content:
+          'Global66 es la plataforma para enviar, recibir y cambiar dinero en Latinoamérica. Conoce el precio del dólar en tiempo real.'
+      },
+      { name: 'format-detection', content: 'telephone=no' },
+      // Open Graph
+      { property: 'og:type', content: 'website' },
+      { property: 'og:locale', content: 'es_CL' },
+      { property: 'og:site_name', content: 'Global66' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },

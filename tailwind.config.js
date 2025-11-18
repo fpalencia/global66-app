@@ -14,8 +14,6 @@ module.exports = {
     './nuxt.config.{js,ts}'
   ],
 
-  darkMode: false, // O 'media' o 'class' si se requiere modo oscuro en el futuro
-
   theme: {
     extend: {
       // Colores corporativos de Global66 (actualizados desde diseño)
