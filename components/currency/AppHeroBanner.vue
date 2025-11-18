@@ -9,7 +9,7 @@
             {{ title }}
           </h1>
           <p class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            1 {{ currencyFrom }} = {{ formattedRate }} {{ currencyTo }}
+            1 {{ displayCurrencyFrom }} = {{ formattedRate }} {{ displayCurrencyTo }}
           </p>
           <p class="text-base md:text-lg opacity-90">
             {{ formattedDate }}
@@ -25,7 +25,7 @@
               <img
                 src="~/assets/images/arrow.svg"
                 alt="exchange"
-                class="absolute top-0 left-1/2 transform -translate-x-1/2 w-12 md:w-16 z-30 top-[10px]"
+                class="absolute top-[10px] left-1/2 transform -translate-x-1/2 w-12 md:w-16 z-30"
                 style="filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.15));"
               />
               
@@ -113,28 +113,35 @@ export default {
     formattedDate() {
       return `Tipo de cambio para ${this.date} a las ${this.time}`
     },
+    // Mostrar siempre "1 USD = X {divisa}" independientemente del orden de las banderas
+    displayCurrencyFrom() {
+      // Si currencyTo es USD, mostrar USD primero en el texto
+      return this.currencyTo === 'USD' ? 'USD' : this.currencyFrom
+    },
+    displayCurrencyTo() {
+      // Si currencyTo es USD, mostrar la otra divisa después
+      return this.currencyTo === 'USD' ? this.currencyFrom : this.currencyTo
+    },
     fromFlagSrc() {
-      // Mapear código de moneda a bandera
+      // Mapear código de moneda a bandera (primera bandera - izquierda)
       const flagMap = {
         'USD': require('~/assets/images/united-states-of-america.svg'),
         'CLP': require('~/assets/images/chile.svg'),
         'PEN': require('~/assets/images/peru.svg')
       }
-      return flagMap[this.currencyFrom] || require('~/assets/images/chile.svg')
+      // Para otras divisas, usar bandera por defecto
+      return flagMap[this.currencyFrom] || require('~/assets/images/iso-default.svg')
     },
     toFlagSrc() {
-      // Mapear código de moneda a bandera
+      // Mapear código de moneda a bandera (segunda bandera - derecha)
       const flagMap = {
         'USD': require('~/assets/images/united-states-of-america.svg'),
         'CLP': require('~/assets/images/chile.svg'),
         'PEN': require('~/assets/images/peru.svg')
       }
+      // Para otras divisas, usar bandera por defecto
       return flagMap[this.currencyTo] || require('~/assets/images/united-states-of-america.svg')
     }
   }
 }
 </script>
-
-<style scoped>
-/* Estilos para el componente */
-</style>

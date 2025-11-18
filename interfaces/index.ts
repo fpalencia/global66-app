@@ -1,0 +1,24 @@
+export interface RatesResponse {
+  base: string
+  rates: Record<string, number>
+  target: string | null
+  asOf: string
+  success: boolean
+}
+
+export interface SubscribeRequest {
+  name: string
+  email: string
+  currency?: string
+}
+
+export interface SubscribeResponse {
+  success: boolean
+  message: string
+  data: {
+    name: string
+    email: string
+    currency: string | null
+    subscribedAt: string
+  }
+}
