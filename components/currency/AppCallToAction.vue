@@ -14,6 +14,8 @@
                   alt="Global66 App - Teléfonos y tarjeta"
                   class="w-full h-auto object-contain lg:scale-110"
                   style="max-width: 500px;"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
             </div>
@@ -45,6 +47,8 @@
                     src="~/assets/images/playstore.svg" 
                     alt="Google Play" 
                     class="h-10 w-auto"
+                    loading="lazy"
+                    decoding="async"
                   />
                 </a>
 
@@ -59,6 +63,8 @@
                     src="~/assets/images/appstore.svg" 
                     alt="App Store" 
                     class="h-10 w-auto"
+                    loading="lazy"
+                    decoding="async"
                   />
                 </a>
               </div>

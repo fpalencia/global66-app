@@ -10,7 +10,7 @@
 module.exports = {
   // Target server para renderizado del lado del servidor (SSR)
   // Nota: 'server' es necesario para que funcione serverMiddleware (API)
-  target: 'static',
+  target: 'server',
 
   // Configuración del head global
   head: {

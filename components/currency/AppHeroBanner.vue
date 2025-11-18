@@ -68,6 +68,8 @@
                 src="~/assets/images/stand.svg"
                 alt="stand"
                 class="w-full"
+                loading="lazy"
+                decoding="async"
               />
             </div>
           </div>
