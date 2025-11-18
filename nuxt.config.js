@@ -7,6 +7,10 @@
  * - Meta tags y SEO básico
  */
 
+// Cargar variables de entorno desde .env antes de usar process.env
+import dotenv from 'dotenv'
+dotenv.config()
+
 export default {
   // Target server para renderizado del lado del servidor (SSR)
   target: 'server',
