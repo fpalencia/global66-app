@@ -5,8 +5,8 @@
  */
 
 module.exports = {
-  // Configuración de purge para producción (Tailwind v2)
-  purge: [
+  // Configuración de content para Tailwind v3
+  content: [
     './components/**/*.{vue,js,ts}',
     './layouts/**/*.vue',
     './pages/**/*.vue',
