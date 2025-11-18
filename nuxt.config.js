@@ -8,8 +8,6 @@
  */
 
 // Cargar variables de entorno desde .env antes de usar process.env
-const dotenv = require('dotenv')
-dotenv.config()
 
 module.exports = {
   // Target server para renderizado del lado del servidor (SSR)
