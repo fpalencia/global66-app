@@ -85,7 +85,7 @@ module.exports = {
 
   // Variables de entorno públicas
   publicRuntimeConfig: {
-    baseURL: process.env.BASE_URL || 'http://localhost:3000',
+    baseURL: process.env.base_url || 'http://localhost:3000',
   },
 
   // Variables de entorno privadas (solo en servidor)
