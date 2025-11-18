@@ -4,7 +4,7 @@
     :style="{
       transform: isScrolled ? 'translateY(0)' : 'translateY(-100%)'
     }">
-    <div class="container mx-auto px-12">
+    <div class="container mx-auto px-4 lg:px-12">
       <div class="flex h-full items-center py-3 xl:py-0">
         <!-- Logo -->
         <div>
@@ -139,11 +139,11 @@
           </div>
 
           <!-- Country Selector -->
-          <div class="flex country-selector hidden md:!-mr-2 xl:flex">
+          <div class="country-selector hidden md:!-mr-2 xl:flex">
             <div class="relative" @click="showCountries = !showCountries" v-click-outside="closeCountries">
               <button class="flex items-center space-x-4 lg:space-x-2">
-                <img src="~/assets/images/chile.svg" width="30" height="30" alt="country" />
-                <p class="text-sm font-semibold xl:hidden text-white">Chile</p>
+                <img :src="selectedCountry.flag" width="30" height="30" :alt="selectedCountry.name" />
+                <p class="text-sm font-semibold xl:hidden text-white">{{ selectedCountry.name }}</p>
                 <img src="/misc/caret-white.svg" width="10" height="8" alt="caret" loading="lazy"
                   class="relative top-px" :class="{ 'rotate-180': showCountries }" />
               </button>
@@ -152,15 +152,15 @@
               <transition name="fade">
                 <div v-if="showCountries"
                   class="absolute right-0 mt-2 bg-white rounded-lg shadow-xl py-2 z-[995] min-w-[200px]">
-                  <NuxtLink to="/precio/peso-chileno"
-                    class="flex w-full items-center space-x-4 py-3 px-4 hover:bg-neutral-50 lg:py-2">
-                    <img src="~/assets/images/chile.svg" width="20" height="20" alt="country" loading="lazy" />
-                    <span class="text-sm font-semibold text-black">Chile</span>
-                  </NuxtLink>
-                  <NuxtLink to="/precio/sol-peruano"
-                    class="flex w-full items-center space-x-4 py-3 px-4 hover:bg-neutral-50 lg:py-2">
-                    <img src="~/assets/images/peru.svg" width="20" height="20" alt="country" loading="lazy" />
-                    <span class="text-sm font-semibold text-black">Perú</span>
+                  <NuxtLink 
+                    v-for="country in countries" 
+                    :key="country.slug"
+                    :to="`/precio/${country.slug}`"
+                    @click.native="selectCountry(country)"
+                    class="flex w-full items-center space-x-4 py-3 px-4 hover:bg-neutral-50 lg:py-2"
+                    :class="{ 'bg-blue-50': selectedCountry.slug === country.slug }">
+                    <img :src="country.flag" width="20" height="20" :alt="country.name" loading="lazy" />
+                    <span class="text-sm font-semibold text-black">{{ country.name }}</span>
                   </NuxtLink>
                 </div>
               </transition>
@@ -312,13 +312,29 @@
               <div class="flex flex-col gap-6 py-6">
                 <!-- Country Selector Mobile -->
                 <div class="flex country-selector">
-                  <button class="flex items-center space-x-4 lg:space-x-2">
-                    <img src="~/assets/images/chile.svg" width="30" height="30" alt="country" />
-                    <p class="text-sm font-semibold text-black-light">Chile</p>
+                  <button class="flex items-center space-x-4 lg:space-x-2" @click="showCountriesMobile = !showCountriesMobile">
+                    <img :src="selectedCountry.flag" width="30" height="30" :alt="selectedCountry.name" />
+                    <p class="text-sm font-semibold text-black-light">{{ selectedCountry.name }}</p>
                     <img src="/misc/caret-b2c.svg" width="10" height="8" alt="caret" loading="lazy"
-                      class="relative top-px" />
+                      class="relative top-px" :class="{ 'rotate-180': showCountriesMobile }" />
                   </button>
                 </div>
+
+                <!-- Dropdown Countries Mobile -->
+                <transition name="collapse">
+                  <div v-if="showCountriesMobile" class="flex flex-col gap-2 pl-3">
+                    <NuxtLink 
+                      v-for="country in countries" 
+                      :key="country.slug"
+                      :to="`/precio/${country.slug}`"
+                      @click.native="selectCountry(country)"
+                      class="flex items-center space-x-3 py-2 hover:bg-neutral-50 rounded"
+                      :class="{ 'bg-blue-50': selectedCountry.slug === country.slug }">
+                      <img :src="country.flag" width="24" height="24" :alt="country.name" loading="lazy" />
+                      <span class="text-sm font-semibold text-black">{{ country.name }}</span>
+                    </NuxtLink>
+                  </div>
+                </transition>
 
                 <!-- CTA Mobile -->
                 <div class="flex flex-col gap-4">
@@ -354,6 +370,7 @@ export default {
       showProductos: false,
       showBeneficios: false,
       showCountries: false,
+      showCountriesMobile: false,
       showCreateAccount: false,
       showProductosMobile: false,
       showBeneficiosMobile: false,
@@ -362,6 +379,26 @@ export default {
       hasScrolledDown: false,
       scrollThreshold: 100,
       scrollTimer: null,
+      countries: [
+        {
+          slug: 'peso-chileno',
+          name: 'Chile',
+          flag: require('~/assets/images/chile.svg')
+        },
+        {
+          slug: 'sol-peruano',
+          name: 'Perú',
+          flag: require('~/assets/images/peru.svg')
+        }
+      ],
+      currentCountrySlug: 'peso-chileno'
+    }
+  },
+  computed: {
+    selectedCountry() {
+      // Detectar país desde la ruta actual
+      const slug = this.$route?.params?.slug || this.currentCountrySlug
+      return this.countries.find(c => c.slug === slug) || this.countries[0]
     }
   },
   mounted() {
@@ -393,6 +430,12 @@ export default {
     }
   },
   methods: {
+    selectCountry(country) {
+      this.currentCountrySlug = country.slug
+      this.showCountries = false
+      this.showCountriesMobile = false
+      this.mobileMenuOpen = false
+    },
     closeCountries() {
       this.showCountries = false
     },

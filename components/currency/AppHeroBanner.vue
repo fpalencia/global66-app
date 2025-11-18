@@ -1,6 +1,6 @@
 <template>
   <section class="bg-global-blue relative overflow-hidden pt-20 md:pt-24 lg:pt-40">
-    <div class="container mx-auto px-12">
+    <div class="container mx-auto px-4 lg:px-12">
       <div class="flex flex-col lg:flex-row justify-between gap-8 lg:gap-12">
         
         <!-- Left Content - Text -->
@@ -63,7 +63,7 @@
             </div>
 
             <!-- Stand Base -->
-            <div class="relative z-0 transform scale-100 md:scale-110 lg:scale-120 origin-bottom">
+            <div class="relative z-0 transform scale-110 md:scale-125 lg:scale-105 origin-bottom">
               <img
                 src="~/assets/images/stand.svg"
                 alt="stand"

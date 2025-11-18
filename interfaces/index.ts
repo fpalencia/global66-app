@@ -9,7 +9,6 @@ export interface RatesResponse {
 export interface SubscribeRequest {
   name: string
   email: string
-  currency?: string
 }
 
 export interface SubscribeResponse {
@@ -18,7 +17,5 @@ export interface SubscribeResponse {
   data: {
     name: string
     email: string
-    currency: string | null
-    subscribedAt: string
   }
 }

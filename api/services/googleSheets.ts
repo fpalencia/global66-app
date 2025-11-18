@@ -54,8 +54,6 @@ const getFirstSheetName = async (sheets: any, spreadsheetId: string): Promise<st
 export const saveToGoogleSheets = async (subscriptionData: {
   name: string
   email: string
-  currency: string | null
-  subscribedAt: string
 }) => {
   try {
     if (!SPREADSHEET_ID) {
@@ -80,14 +78,11 @@ export const saveToGoogleSheets = async (subscriptionData: {
       sheetName = await getFirstSheetName(sheets, SPREADSHEET_ID)
     }
 
-    // Preparar datos para la fila
+    // Preparar datos para la fila (solo nombre y email)
     const values = [
       [
         subscriptionData.name,
-        subscriptionData.email,
-        subscriptionData.currency || 'No especificada',
-        subscriptionData.subscribedAt,
-        new Date().toLocaleString('es-CL')
+        subscriptionData.email
       ]
     ]
 
@@ -97,17 +92,17 @@ export const saveToGoogleSheets = async (subscriptionData: {
     try {
       const response = await sheets.spreadsheets.values.get({
         spreadsheetId: SPREADSHEET_ID,
-        range: `${formattedSheetName}!A1:E1`,
+        range: `${formattedSheetName}!A1:B1`,
       })
 
       // Si no hay datos, agregar encabezados
       if (!response.data.values || response.data.values.length === 0) {
         await sheets.spreadsheets.values.update({
           spreadsheetId: SPREADSHEET_ID,
-          range: `${formattedSheetName}!A1:E1`,
+          range: `${formattedSheetName}!A1:B1`,
           valueInputOption: 'RAW',
           requestBody: {
-            values: [['Nombre', 'Email', 'Moneda', 'Fecha ISO', 'Fecha Local']]
+            values: [['Nombre', 'Email']]
           }
         })
       }
@@ -118,7 +113,7 @@ export const saveToGoogleSheets = async (subscriptionData: {
     // Agregar nueva fila
     const result = await sheets.spreadsheets.values.append({
       spreadsheetId: SPREADSHEET_ID,
-      range: `${formattedSheetName}!A:E`,
+      range: `${formattedSheetName}!A:B`,
       valueInputOption: 'RAW',
       insertDataOption: 'INSERT_ROWS',
       requestBody: {

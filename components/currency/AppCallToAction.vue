@@ -1,6 +1,6 @@
 <template>
   <section class="py-12 md:py-20 lg:py-28">
-    <div class="container mx-auto px-12">
+    <div class="container mx-auto px-4 lg:px-12">
       <div class="relative">
         <!-- Card Container con overflow visible para que la imagen sobresalga -->
         <div class="bg-global-light rounded-3xl shadow-xl overflow-visible">

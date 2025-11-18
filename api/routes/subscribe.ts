@@ -6,34 +6,18 @@
 
 import { Request, Response, Router } from 'express'
 import { SubscribeRequest, SubscribeResponse } from '../../interfaces'
-import { normalizeCurrency, isSupportedCurrency, isValidEmail } from '../../utils/format'
+import { isValidEmail } from '../../utils/format'
 import { saveToGoogleSheets } from '../services/googleSheets'
 
 const router = Router()
 
-// Tasas de cambio mock (para validación)
-const MOCK_RATES: Readonly<Record<string, number>> = {
-  USD: 1.0,
-  CLP: 987.62,
-  PEN: 3.81,
-  ARS: 1025.5,
-  BRL: 5.42,
-  MXN: 17.15,
-  COP: 4125.0,
-  EUR: 0.92,
-  GBP: 0.79
-} as const
-
-const SUPPORTED_CURRENCIES = Object.keys(MOCK_RATES)
-
 /**
  * Formatea los datos de suscripción para el log
  */
-const logSubscription = (data: { name: string; email: string; currency?: string | null }) => {
+const logSubscription = (data: { name: string; email: string }) => {
   console.log('📧 NUEVA SUSCRIPCIÓN')
   console.log(`Nombre:   ${data.name}`)
   console.log(`Email:    ${data.email}`)
-  console.log(`Moneda:   ${data.currency || 'No especificada'}`)
   console.log(`Fecha:    ${new Date().toLocaleString('es-CL')}`)
   console.log('\n')
 }
@@ -46,8 +30,7 @@ const logSubscription = (data: { name: string; email: string; currency?: string 
  * Body:
  * {
  *   name: string (requerido),
- *   email: string (requerido),
- *   currency?: string (opcional)
+ *   email: string (requerido)
  * }
  *
  * Response:
@@ -59,7 +42,7 @@ const logSubscription = (data: { name: string; email: string; currency?: string 
  */
 router.post('/', async (req: Request<{}, {}, SubscribeRequest>, res: Response) => {
   try {
-    const { name, email, currency } = req.body
+    const { name, email } = req.body
 
     // Validar campos requeridos
     if (!name?.trim() || !email?.trim()) {
@@ -79,24 +62,10 @@ router.post('/', async (req: Request<{}, {}, SubscribeRequest>, res: Response) =
       })
     }
 
-    // Normalizar y validar moneda si se proporciona
-    const normalizedCurrency = currency ? normalizeCurrency(currency) : null
-    
-    if (normalizedCurrency && !isSupportedCurrency(normalizedCurrency, MOCK_RATES)) {
-      return res.status(400).json({
-        success: false,
-        error: 'Moneda no soportada',
-        message: `La moneda '${normalizedCurrency}' no es válida`,
-        supportedCurrencies: SUPPORTED_CURRENCIES
-      })
-    }
-
     // Preparar datos de suscripción
     const subscriptionData = {
       name: name.trim(),
-      email: email.trim().toLowerCase(),
-      currency: normalizedCurrency,
-      subscribedAt: new Date().toISOString()
+      email: email.trim().toLowerCase()
     }
 
     // Guardar en Google Sheets
