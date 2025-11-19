@@ -4,7 +4,7 @@
 
 **Técnicas:** Core Web Vitals (LCP <2.5s, CLS <0.1), tiempo de carga <3s, y que todas las divisas estén indexadas correctamente. Verificar que el schema `ExchangeRateSpecification` se renderice bien para rich snippets.
 
-**Negocio:** CTR al CTA (objetivo >3%), tiempo en página >60s, scroll depth (especialmente hasta el CTA), y tasa de rebote <50%. Por divisa: posiciones en SERP para queries como "precio dólar [divisa]", tráfico orgánico segmentado, y conversión por divisa para identificar cuáles convierten mejor.
+**Negocio:** CTR al CTA (objetivo >3%), tiempo en página >60s, scroll depth (especialmente hasta el CTA), y tasa de rebote <50%. Por divisa: posiciones en SERP (Search Engine Result Page) para queries como "precio dólar [divisa]", tráfico orgánico segmentado, y conversión por divisa para identificar cuáles convierten mejor.
 
 **Stack:** Google Analytics 4 para eventos personalizados (scroll depth, clicks en CTA), Search Console para SEO, y Hotjar para ver comportamiento real de usuarios.
 
@@ -12,7 +12,7 @@
 
 ## 2. Caída del 20% orgánico en "precio dólar" para CLP: ¿cómo la investigarías y qué acciones tomarías en 72h?
 
-**Primeras 24h:** Verificar en Search Console si hay errores de rastreo, cambios en impresiones/clics, o penalizaciones. Revisar que `/precio/peso-chileno` responda 200, que el schema.org esté correcto, y ejecutar Lighthouse para comparar performance. Analizar SERP: ¿aparecieron nuevos competidores? ¿Cambió el featured snippet?
+**Primeras 24h:** Verificar en Search Console si hay errores de rastreo, cambios en impresiones/clics, o penalizaciones. Revisar que `/precio/peso-chileno` responda 200, que el schema.org esté correcto, y ejecutar Lighthouse para comparar performance. Analizar SERP: ¿aparecieron nuevos competidores?
 
 **24-48h:** Si es técnico, corregir schema.org y optimizar meta description con keywords. Si es contenido, actualizar H1 y primer párrafo con "precio dólar peso chileno", agregar FAQ section, y mejorar internal linking desde páginas de alto tráfico.
 
