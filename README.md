@@ -184,15 +184,41 @@ La API está disponible en `/api` y proporciona los siguientes endpoints:
 
 Obtiene los tipos de cambio de divisas actuales.
 
+**Query Parameters (opcionales):**
+- `base`: Moneda base (default: `USD`). Valores soportados: `USD`, `CLP`, `PEN`, `ARS`, `BRL`, `MXN`, `COP`, `EUR`, `GBP`
+- `target`: Moneda objetivo (opcional)
+
+**Ejemplos de uso con curl:**
+
+```bash
+# Obtener todos los tipos de cambio (base USD por defecto)
+curl -X GET "http://localhost:3000/api/rates"
+
+# Obtener tipos de cambio con moneda base específica
+curl -X GET "http://localhost:3000/api/rates?base=CLP"
+
+# Obtener tipos de cambio con moneda base y objetivo
+curl -X GET "http://localhost:3000/api/rates?base=USD&target=EUR"
+```
+
 **Respuesta:**
 ```json
 {
   "success": true,
-  "data": {
-    "USD": 850.50,
-    "EUR": 920.30,
-    "CLP": 1.0
-  }
+  "base": "USD",
+  "rates": {
+    "USD": 1.0,
+    "CLP": 987.62,
+    "PEN": 3.81,
+    "ARS": 1025.5,
+    "BRL": 5.42,
+    "MXN": 17.15,
+    "COP": 4125.0,
+    "EUR": 0.92,
+    "GBP": 0.79
+  },
+  "target": null,
+  "asOf": "2024-01-15T10:30:00.000Z"
 }
 ```
 
@@ -200,20 +226,44 @@ Obtiene los tipos de cambio de divisas actuales.
 
 Registra una nueva suscripción de usuario en Google Sheets.
 
-**Body:**
+**Body (JSON):**
 ```json
 {
-  "email": "usuario@ejemplo.com",
-  "name": "Juan Pérez",
-  "country": "Chile"
+  "name": "Maria Gonzalez",
+  "email": "maria.gonzalez@ejemplo.com"
 }
 ```
 
-**Respuesta:**
+**Ejemplos de uso con curl:**
+
+```bash
+# Suscripción básica
+curl -X POST "http://localhost:3000/api/subscribe" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Maria Gonzalez",
+    "email": "maria.gonzalez@ejemplo.com"
+  }'
+```
+
+**Respuesta exitosa (201):**
 ```json
 {
   "success": true,
-  "message": "Suscripción registrada exitosamente"
+  "message": "¡Gracias por suscribirte! Te mantendremos informado sobre los mejores tipos de cambio.",
+  "data": {
+    "name": "Maria Gonzalez",
+    "email": "maria.gonzalez@ejemplo.com"
+  }
+}
+```
+
+**Respuesta de error (400):**
+```json
+{
+  "success": false,
+  "error": "Email inválido",
+  "message": "Por favor proporciona un email válido"
 }
 ```
 
