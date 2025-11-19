@@ -294,6 +294,10 @@ Configuración personalizada en `tailwind.config.js` con:
 - **Google Sheets**: Se usa como base de datos simple para suscripciones
 - **Seguridad**: Las credenciales sensibles deben estar en `.env` (nunca en el código)
 
+## 📚 Documentación Adicional
+
+- **[Growth Thinking](./GROWTH_THINKING.md)** - Análisis de métricas, optimizaciones y estrategias de crecimiento para la página `/precio/*`
+
 ## 📄 Licencia
 
 Este proyecto es privado y pertenece a Global66.
