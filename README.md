@@ -83,7 +83,7 @@ npm install
 
 ## ⚙️ Configuración
 
-### 1. Variables de Entorno
+### Variables de Entorno
 
 Crea un archivo `.env` en la raíz del proyecto copiando el archivo de ejemplo:
 
@@ -91,42 +91,11 @@ Crea un archivo `.env` en la raíz del proyecto copiando el archivo de ejemplo:
 cp .env-example .env
 ```
 
-### 2. Configurar Google Sheets API
-
-Para que funcione la integración con Google Sheets, necesitas:
-
-1. **Google Spreadsheet ID**: ID de tu hoja de cálculo de Google
-2. **Service Account Email**: Email de la cuenta de servicio de Google
-3. **Private Key**: Clave privada de la cuenta de servicio
-
-Edita el archivo `.env` con tus credenciales:
-
-```env
-# Google Sheets Configuration
-GOOGLE_SPREADSHEET_ID=tu-spreadsheet-id-aqui
-GOOGLE_SERVICE_ACCOUNT_EMAIL=tu-service-account@tu-proyecto.iam.gserviceaccount.com
-GOOGLE_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\nTU_CLAVE_PRIVADA_AQUI\n-----END PRIVATE KEY-----\n"
-GOOGLE_SHEET_NAME=Suscripciones
-
-# Server Configuration
-PORT=3000
-NODE_ENV=development
-BASE_URL=http://localhost:3000
-```
+**Nota:** El archivo `.env-example` ya contiene toda la configuración necesaria de Google Sheets preconfigurada y lista para usar. No es necesario crear o configurar un nuevo Spreadsheet, ya que la integración está lista para funcionar con la configuración existente.
 
 #### 📊 Google Spreadsheet Público
 
 - **Enlace al Spreadsheet**: [Ver Spreadsheet](https://docs.google.com/spreadsheets/d/1KpgC44m_b0b7jpJmQsqsBa-O_hKaPDYjTUx64wXn9pM/edit#gid=0)
-
-#### 🔑 Cómo Obtener las Credenciales de Google
-
-1. Ve a [Google Cloud Console](https://console.cloud.google.com/)
-2. Crea un nuevo proyecto o selecciona uno existente
-3. Habilita la API de Google Sheets
-4. Ve a "Credenciales" → "Crear credenciales" → "Cuenta de servicio"
-5. Descarga el archivo JSON con las credenciales
-6. Copia el `client_email` y `private_key` al archivo `.env`
-7. Comparte tu Google Sheet con el email de la cuenta de servicio
 
 ## 🚀 Ejecución
 
