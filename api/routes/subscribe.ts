@@ -83,7 +83,7 @@ router.post('/', async (req: Request<{}, {}, SubscribeRequest>, res: Response) =
 
     const response: SubscribeResponse = {
       success: true,
-      message: '¡Gracias por suscribirte! Te mantendremos informado sobre los mejores tipos de cambio.',
+      message: '¡Gracias por unirte! Te avisaremos cada vez que haya un tipo de cambio conveniente para ti.',
       data: subscriptionData
     }
 

@@ -227,7 +227,7 @@ curl -X POST "http://localhost:3000/api/subscribe" \
 ```json
 {
   "success": true,
-  "message": "¡Gracias por suscribirte! Te mantendremos informado sobre los mejores tipos de cambio.",
+  "message": "¡Gracias por unirte! Te avisaremos cada vez que haya un tipo de cambio conveniente para ti.",
   "data": {
     "name": "Maria Gonzalez",
     "email": "maria.gonzalez@ejemplo.com"
