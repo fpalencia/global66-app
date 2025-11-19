@@ -81,7 +81,7 @@
 
 <script>
 export default {
-  name: 'AppHeroBanner',
+  name: 'AppHeroCurrency',
   props: {
     title: {
       type: String,

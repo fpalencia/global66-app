@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- Hero Banner con tipo de cambio -->
-    <AppHeroBanner :title="exchangeData.title" :currency-from="exchangeData.currencyFrom"
+    <AppHeroCurrency :title="exchangeData.title" :currency-from="exchangeData.currencyFrom"
       :currency-to="exchangeData.currencyTo" :rate="exchangeData.rate" :date="exchangeData.date"
       :time="exchangeData.time" />
 
@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import AppHeroBanner from '~/components/currency/AppHeroBanner.vue'
+import AppHeroCurrency from '~/components/currency/AppHeroCurrency.vue'
 import AppCallToAction from '~/components/currency/AppCallToAction.vue'
 import { getCurrencyFromSlug, isValidSlug } from '~/utils/currencyMapper'
 import { apiGet } from '~/utils/api'
@@ -19,7 +19,7 @@ import { apiGet } from '~/utils/api'
 export default {
   name: 'PrecioPage',
   components: {
-    AppHeroBanner,
+    AppHeroCurrency,
     AppCallToAction
   },
 
