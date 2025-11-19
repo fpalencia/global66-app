@@ -87,7 +87,7 @@ module.exports = {
       }
     ],
     link: [
-      { rel: 'icon', type: 'image/png', href: '/fav.png?v3' },
+      { rel: 'icon', type: 'image/png', href: '/misc/fav.png?v3' },
       {
         hid: 'canonical',
         rel: 'canonical',
