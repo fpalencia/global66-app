@@ -48,7 +48,11 @@ global66-app/
 │   └── images/
 ├── components/              # Componentes Vue reutilizables
 │   ├── commons/            # Componentes comunes
+│   │   ├── AppHeader.vue   # Header de la aplicación
+│   │   └── AppNavBar.vue   # Barra de navegación
 │   └── currency/           # Componentes de divisas
+│       ├── AppCallToAction.vue    # Componente CTA
+│       └── AppHeroCurrency.vue    # Hero con tipo de cambio
 ├── layouts/                # Layouts de Nuxt
 │   ├── default.vue         # Layout por defecto
 │   └── error.vue           # Página de error
@@ -58,7 +62,11 @@ global66-app/
 │       ├── index.vue
 │       └── _slug.vue       # Página dinámica de divisas
 ├── interfaces/             # Interfaces TypeScript
+│   └── index.ts           # Definiciones de tipos e interfaces
 ├── utils/                  # Utilidades y helpers
+│   ├── api.ts             # Utilidades para llamadas API
+│   ├── currencyMapper.ts  # Mapeo de divisas y slugs
+│   └── format.ts           # Funciones de formateo
 ├── static/                 # Archivos estáticos públicos
 ├── nuxt.config.js         # Configuración de Nuxt
 ├── tailwind.config.js     # Configuración de Tailwind
