@@ -298,4 +298,4 @@ Este proyecto es privado y pertenece a Global66.
 
 ---
 
-**Hecho con ❤️ por el equipo de Global66**
+**Hecho con ❤️ por Freddy Palencia**
