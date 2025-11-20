@@ -37,7 +37,7 @@
                 <div class="flex gap-2">
                   Productos
                   <img src="/misc/caret-white.svg" width="10" height="8" alt="caret" class="relative top-px"
-                    :class="{ 'rotate-180': showProductos }" />
+                    />
                 </div>
               </button>
 
@@ -93,7 +93,7 @@
                 <div class="flex gap-2">
                   Beneficios
                   <img src="/misc/caret-white.svg" width="10" height="8" alt="caret" class="relative top-px"
-                    :class="{ 'rotate-180': showBeneficios }" />
+                    />
                 </div>
               </button>
 
@@ -145,7 +145,7 @@
                 <img :src="selectedCountry.flag" width="30" height="30" :alt="selectedCountry.name" />
                 <p class="text-sm font-semibold xl:hidden text-white">{{ selectedCountry.name }}</p>
                 <img src="/misc/caret-white.svg" width="10" height="8" alt="caret" loading="lazy"
-                  class="relative top-px" :class="{ 'rotate-180': showCountries }" />
+                  class="relative top-px" />
               </button>
 
               <!-- Dropdown Countries -->
