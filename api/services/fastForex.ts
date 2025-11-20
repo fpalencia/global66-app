@@ -6,7 +6,7 @@ import { FastForexResponse } from '@/interfaces'
  */
 
 const FASTFOREX_API_KEY = process.env.FASTFOREX_API_KEY
-const FASTFOREX_BASE_URL = 'https://api.fastforex.io'
+const FASTFOREX_BASE_URL = process.env.FASTFOREX_BASE_URL
 
 
 /**
