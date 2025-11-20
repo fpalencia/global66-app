@@ -389,6 +389,11 @@ export default {
           slug: 'sol-peruano',
           name: 'Perú',
           flag: require('~/assets/images/peru.svg')
+        },
+        {
+          slug: 'peso-argentino',
+          name: 'Argentina',
+          flag: require('~/assets/images/ar.svg')
         }
       ],
       currentCountrySlug: 'peso-chileno'

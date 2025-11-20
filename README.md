@@ -16,6 +16,7 @@ Aplicación web de Global66 para consultar tipos de cambio, enviar dinero y gest
 
 ### Backend/API
 - **Express 4.18.2** - Framework web para Node.js
+- **FastForex API** - API para obtener tipos de cambio en tiempo real
 - **Google Sheets API** - Integración con Google Spreadsheets
 - **Google Auth Library** - Autenticación con Google Service Account
 
@@ -42,6 +43,7 @@ global66-app/
 │   │   ├── rates.ts        # Endpoint de tipos de cambio
 │   │   └── subscribe.ts    # Endpoint de suscripciones
 │   └── services/           # Servicios y lógica de negocio
+│       ├── fastForex.ts    # Integración con FastForex API
 │       └── googleSheets.ts # Integración con Google Sheets
 ├── assets/                  # Recursos estáticos (CSS, imágenes)
 │   ├── css/
@@ -99,7 +101,18 @@ Crea un archivo `.env` en la raíz del proyecto copiando el archivo de ejemplo:
 cp .env-example .env
 ```
 
-**Nota:** El archivo `.env-example` ya contiene toda la configuración necesaria de Google Sheets preconfigurada y lista para usar. No es necesario crear o configurar un nuevo Spreadsheet, ya que la integración está lista para funcionar con la configuración existente.
+**Nota:** El archivo `.env-example` ya contiene toda la configuración necesaria preconfigurada y lista para usar:
+- **Google Sheets**: No es necesario crear o configurar un nuevo Spreadsheet, ya que la integración está lista para funcionar con la configuración existente.
+- **FastForex API Key**: Ya hay una API key de FastForex configurada en el archivo de ejemplo, lista para usar.
+
+#### 🔑 FastForex API Key
+
+El archivo `.env-example` ya incluye una API key de FastForex configurada y lista para usar. Si necesitas obtener tu propia API key:
+
+1. Regístrate en [FastForex Console](https://console.fastforex.io) para obtener una API key gratuita (7 días de prueba)
+2. Reemplaza la API key en el archivo `.env` si lo deseas
+
+**Nota:** Si no configuras `FASTFOREX_API_KEY`, la aplicación usará datos mock como fallback.
 
 #### 📊 Google Spreadsheet Público
 

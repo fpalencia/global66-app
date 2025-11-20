@@ -123,7 +123,8 @@ export default {
       const flagMap = {
         'USD': require('~/assets/images/united-states-of-america.svg'),
         'CLP': require('~/assets/images/chile.svg'),
-        'PEN': require('~/assets/images/peru.svg')
+        'PEN': require('~/assets/images/peru.svg'),
+        'ARS': require('~/assets/images/ar.svg')
       }
       // Para otras divisas, usar bandera por defecto
       return flagMap[this.currencyFrom] || require('~/assets/images/iso-default.svg')
