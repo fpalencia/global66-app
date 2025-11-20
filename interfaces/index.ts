@@ -19,3 +19,13 @@ export interface SubscribeResponse {
     email: string
   }
 }
+
+/**
+ * Interfaz de respuesta de FastForex
+ */
+export interface FastForexResponse {
+  base: string
+  result: Record<string, number>
+  updated: string
+  ms: number
+}

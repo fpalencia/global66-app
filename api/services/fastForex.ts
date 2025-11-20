@@ -1,3 +1,4 @@
+import { FastForexResponse } from '@/interfaces'
 /**
  * Servicio de FastForex API
  * 
@@ -7,15 +8,6 @@
 const FASTFOREX_API_KEY = process.env.FASTFOREX_API_KEY
 const FASTFOREX_BASE_URL = 'https://api.fastforex.io'
 
-/**
- * Interfaz de respuesta de FastForex
- */
-interface FastForexResponse {
-  base: string
-  result: Record<string, number>
-  updated: string
-  ms: number
-}
 
 /**
  * Obtiene el tipo de cambio de una moneda específica desde FastForex
