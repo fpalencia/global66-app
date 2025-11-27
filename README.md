@@ -120,6 +120,13 @@ El archivo `.env-example` ya incluye una API key de FastForex configurada y list
 
 ## 🚀 Ejecución
 
+### 🌐 Producción (Railway)
+
+La aplicación está desplegada y disponible en:
+
+- **Frontend**: [https://global66-app-production.up.railway.app](https://global66-app-production.up.railway.app)
+- **API**: [https://global66-app-production.up.railway.app/api](https://global66-app-production.up.railway.app/api)
+
 ### Modo Desarrollo
 
 Inicia el servidor de desarrollo con hot-reload:
@@ -181,14 +188,22 @@ Obtiene los tipos de cambio de divisas actuales.
 **Ejemplos de uso con curl:**
 
 ```bash
+# 🌐 PRODUCCIÓN (Railway)
 # Obtener todos los tipos de cambio (base USD por defecto)
+curl -X GET "https://global66-app-production.up.railway.app/api/rates"
+
+# Obtener tipos de cambio con moneda base específica
+curl -X GET "https://global66-app-production.up.railway.app/api/rates?base=CLP"
+
+# Obtener tipos de cambio con moneda base y objetivo
+curl -X GET "https://global66-app-production.up.railway.app/api/rates?base=USD&target=EUR"
+
+# 💻 LOCAL (Desarrollo)
+# Obtener todos los tipos de cambio
 curl -X GET "http://localhost:3000/api/rates"
 
 # Obtener tipos de cambio con moneda base específica
 curl -X GET "http://localhost:3000/api/rates?base=CLP"
-
-# Obtener tipos de cambio con moneda base y objetivo
-curl -X GET "http://localhost:3000/api/rates?base=USD&target=EUR"
 ```
 
 **Respuesta:**
@@ -227,13 +242,33 @@ Registra una nueva suscripción de usuario en Google Sheets.
 **Ejemplos de uso con curl:**
 
 ```bash
-# Suscripción básica
+# 🌐 PRODUCCIÓN (Railway) - Postman/Curl
+curl -X POST "https://global66-app-production.up.railway.app/api/subscribe" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Maria Gonzalez",
+    "email": "maria.gonzalez@ejemplo.com"
+  }'
+
+# 💻 LOCAL (Desarrollo)
 curl -X POST "http://localhost:3000/api/subscribe" \
   -H "Content-Type: application/json" \
   -d '{
     "name": "Maria Gonzalez",
     "email": "maria.gonzalez@ejemplo.com"
   }'
+```
+
+**Para probar en Postman:**
+- **Método**: POST
+- **URL**: `https://global66-app-production.up.railway.app/api/subscribe`
+- **Headers**: `Content-Type: application/json`
+- **Body (raw JSON)**:
+```json
+{
+  "name": "Tu Nombre",
+  "email": "tu.email@ejemplo.com"
+}
 ```
 
 **Respuesta exitosa (201):**
@@ -254,6 +289,34 @@ curl -X POST "http://localhost:3000/api/subscribe" \
   "success": false,
   "error": "Email inválido",
   "message": "Por favor proporciona un email válido"
+}
+```
+
+## 🧪 Pruebas con Postman
+
+### Importar a Postman
+
+Puedes probar fácilmente los endpoints de la API en producción:
+
+**Base URL**: `https://global66-app-production.up.railway.app`
+
+#### Endpoint 1: Obtener Tipos de Cambio
+- **Método**: GET
+- **URL**: `https://global66-app-production.up.railway.app/api/rates`
+- **Params (opcionales)**:
+  - `base`: USD, CLP, PEN, ARS, etc.
+  - `target`: Moneda objetivo
+
+#### Endpoint 2: Crear Suscripción
+- **Método**: POST
+- **URL**: `https://global66-app-production.up.railway.app/api/subscribe`
+- **Headers**:
+  - `Content-Type: application/json`
+- **Body (raw JSON)**:
+```json
+{
+  "name": "Tu Nombre Completo",
+  "email": "tu.email@ejemplo.com"
 }
 ```
 
